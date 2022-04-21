@@ -9,6 +9,26 @@ const AnimeList = () => {
         <Anime />
         <Anime />
         <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
+        <Anime />
       </section>
     </div>
   );
