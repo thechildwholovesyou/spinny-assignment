@@ -16,10 +16,10 @@
 .searchBar {
   width: 100%;
   max-width: 620px;
-  background: var(--card-bg);
+  background: #2d3748;
   padding: 0.3rem;
-  border-radius: 0.2rem;
-  border: 0.1rem solid var(--border-color);
+  border-radius: 0.4rem;
+  border: 0.1rem solid yellowgreen;
 
   display: flex;
   justify-content: space-between;
@@ -50,10 +50,13 @@
 .input::placeholder {
   color: rgb(212, 212, 212);
 }
+.subBtn {
+  background-color: red;
+}
 
 .request-url {
   font-size: 0.95rem;
-  color: var(--text-color);
+  color: skyblue;
   letter-spacing: 0.06rem;
   margin: 1rem 0 0.5rem;
   background: rgba(255, 255, 255, 0.1);

@@ -9,8 +9,8 @@ const SearchBar = () => {
         autoFocus={true}
         className="input"
       />
-      <button type="submit" className="btn">
-        Go
+      <button type="button" class="btn btn-info">
+        Go..
       </button>
     </form>
   );
