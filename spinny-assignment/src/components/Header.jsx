@@ -1,19 +1,15 @@
-import "../css/header.css";
+import "./Header.css";
 const Header = () => {
+  let query = 0;
+  let pageNo = 0;
   return (
     <header className="header">
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">
-          @
+      <p className="text-center request-url">
+        Requesting :{" "}
+        <span className="url">
+          {`https://api.jikan.moe/v3/search/anime?q=${query}&limit=16&page=${pageNo}`}
         </span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-      </div>
+      </p>
     </header>
   );
 };
