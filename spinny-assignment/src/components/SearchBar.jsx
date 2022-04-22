@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import "./Header.css";
 
+import "../styles/Header.css"
 import { updateAnimes, currentSearch, newAnimes } from "../redux/actions";
 const SearchBar = () => {
   let [sval, setSval] = useState("");

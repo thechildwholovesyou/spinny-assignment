@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import "./Anime.css";
+
+import "../styles/Anime.css"
 import Anime from "./Anime";
 import Footer from "./Footer";
 import Loading from "./Loading";

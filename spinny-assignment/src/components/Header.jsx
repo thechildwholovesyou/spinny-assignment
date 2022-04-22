@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import "./Header.css";
+import "../styles/Header.css"
 import SearchBar from "./SearchBar";
 const Header = () => {
   let query = useSelector((state) => state.currentSearch);

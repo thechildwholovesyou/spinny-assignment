@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import "./Footer.css";
+import "../styles/Footer.css"
 import {
   updateAnimes,
   currentSearch,
