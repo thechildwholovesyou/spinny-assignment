@@ -4,11 +4,15 @@ import "../styles/Anime.css"
 import Anime from "./Anime";
 import Footer from "./Footer";
 import Loading from "./Loading";
+
 import {
   updateAnimes,
   currentSearch,
   incrementPageNumberAction,
+  error
 } from "../redux/actions";
+
+
 import { useSelector, useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,7 +21,13 @@ const AnimeList = () => {
   let animeList = useSelector((state) => state.animeList);
   let currSearch = useSelector((state) => state.currentSearch);
   let currPage = useSelector((state) => state.currPage);
+
+
+
+
   console.log(currPage);
+
+
   let dispatch = useDispatch();
   useEffect(() => {
     const fetchAnimes = async () => {
@@ -36,10 +46,10 @@ const AnimeList = () => {
 
       if (!data.results) {
         if (data.status == 404) {
-          //dispatch(error(true));
+          dispatch(error(true));
           toast.error(data.message);
         } else {
-          //dispatch(error(true));
+          dispatch(error(true));
           toast.error("Oops some error occured ");
         }
         return;

@@ -7,6 +7,8 @@ import {
   amineListReducer,
   currentSearchAPIReducer,
   incrementPageReducer,
+  errorReducer,
+  loadReducer,
 } from "./redux/reducers.js";
 import { Provider } from "react-redux";
 
@@ -14,6 +16,8 @@ let rootReducer = combineReducers({
   animeList: amineListReducer,
   currentSearch: currentSearchAPIReducer,
   currPage: incrementPageReducer,
+  error: errorReducer,
+  load: loadReducer,
 });
 
 let store = createStore(rootReducer);
