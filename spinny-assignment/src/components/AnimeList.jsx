@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import "../styles/Anime.css"
+import "../styles/Anime.css";
 import Anime from "./Anime";
 import Footer from "./Footer";
 import Loading from "./Loading";
@@ -9,9 +9,9 @@ import {
   updateAnimes,
   currentSearch,
   incrementPageNumberAction,
-  error
+  error,
+  load,
 } from "../redux/actions";
-
 
 import { useSelector, useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
@@ -22,16 +22,11 @@ const AnimeList = () => {
   let currSearch = useSelector((state) => state.currentSearch);
   let currPage = useSelector((state) => state.currPage);
 
-
-
-
   console.log(currPage);
-
 
   let dispatch = useDispatch();
   useEffect(() => {
     const fetchAnimes = async () => {
-        
       if (currSearch == undefined || currSearch.length == 0) {
         toast("Please search Your favourite Animes");
         return;
@@ -56,16 +51,18 @@ const AnimeList = () => {
       }
 
       dispatch(updateAnimes(data.results));
+      dispatch(load(false));
     };
+    dispatch(load(true));
     fetchAnimes();
   }, [currSearch, currPage]);
 
-  console.log(animeList);
+  //console.log(animeList);
 
   return (
     <div>
       {currSearch.length == 0 ? (
-        <Loading/>
+        <Loading />
       ) : (
         <>
           <section className="anime-container">

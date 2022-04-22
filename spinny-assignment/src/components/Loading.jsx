@@ -5,13 +5,16 @@ import "../styles/Loading.css";
 const Loading = () => {
   let error = useSelector((state) => state.error);
   let load = useSelector((state) => state.load);
+  let query = useSelector((state) => state.currentSearch);
   return (
     <section className="loading">
-      <h1 className="loading-text">
-        {error
-          ? "Oops! Something Went Wrong"
-          : "Please Enter Your Favourite Anime"}
-      </h1>
+      {error == true ? (
+        <h1 className="loading-text">Oops! Something Went Wrong</h1>
+      ) : query.length == 0 ? (
+        <h1 className="loading-text">Search Your Favourite Anime</h1>
+      ) : (
+        <h1 className="loading-text">Loading</h1>
+      )}
     </section>
   );
 };
