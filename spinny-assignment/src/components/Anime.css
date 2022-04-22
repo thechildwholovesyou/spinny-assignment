@@ -11,7 +11,7 @@
   height: 27rem;
   margin: 30px;
   border: 1px solid;
-  box-shadow: 5px 5px 4px 0px black;
+  box-shadow: 5px 5px 4px 0px yellowgreen;
   transition: 0.5s;
 }
 
@@ -28,6 +28,6 @@
 
 .anime-title {
   padding: 1rem 0.5rem;
-  color: var(--secondary);
-  font-size: 1.2rem;
+  color: yellow;
+  font-size: 0.9rem;
 }

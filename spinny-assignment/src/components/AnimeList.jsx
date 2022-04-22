@@ -21,9 +21,6 @@ const AnimeList = () => {
   useEffect(() => {
     const fetchAnimes = async () => {
         
-
-
-
       if (currSearch == undefined || currSearch.length == 0) {
         toast("Please search Your favourite Animes");
         return;

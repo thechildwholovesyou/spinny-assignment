@@ -12,10 +12,11 @@ const Footer = () => {
 
   return (
     <button
+      type="button"
+      class="btn btn-warning button_loadMore"
       onClick={() => {
         dispatch(incrementPageNumberAction());
       }}
-      className="button_loadMore"
     >
       Load More
     </button>
