@@ -1,6 +1,6 @@
 export const amineListReducer = (state = [], action) => {
   switch (action.type) {
-    case "UPDATE_LIST":
+    case "UPDATE":
       return [...state, action.payload];
     case "NEW_LIST":
       return [];

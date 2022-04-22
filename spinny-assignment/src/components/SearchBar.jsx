@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 const SearchBar = () => {
+  let [sVal, setNewSval] = useState("");
+
   return (
     <form className="searchBar">
       <input
@@ -8,6 +10,10 @@ const SearchBar = () => {
         placeholder="Search anime..."
         autoFocus={true}
         className="input"
+        value={sVal}
+        onChange={(e) => {
+          setNewSval(e.target.value);
+        }}
       />
       <button type="button" class="btn btn-info">
         Go..

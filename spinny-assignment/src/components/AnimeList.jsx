@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import "./Anime.css";
 import Anime from "./Anime";
+import { updateAnimes } from "../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+
 const AnimeList = () => {
   let query = "naruto";
   let page = 1;
-
+  let animeList = useSelector((state) => state.animeListReducer);
+  let dispatch = useDispatch();
   useEffect(() => {
     const fetchAnimes = async () => {
       const response = await fetch(
@@ -14,14 +18,21 @@ const AnimeList = () => {
       });
       const data = await response.json();
       console.log(data.results);
+      dispatch(updateAnimes(data.results));
     };
     fetchAnimes();
-  });
-
+  }, []);
+  console.log(animeList);
   return (
     <div>
+      {console.log(animeList)}
       <section className="anime-container">
-        <Anime />
+        {animeList.map((el) => {
+          return el.map((e) => {
+            console.log(e);
+            return <Anime image_url={e.image_url} title={e.title} />;
+          });
+        })}
       </section>
     </div>
   );
