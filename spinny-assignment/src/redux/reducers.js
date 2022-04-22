@@ -8,3 +8,13 @@ export const amineListReducer = (state = [], action) => {
       return state;
   }
 };
+
+export const currentSearchAPIReducer = (state = "", action) => {
+  switch (action.type) {
+    case "CURRENT_SEARCH":
+      return action.payload;
+
+    default:
+      return state;
+  }
+};

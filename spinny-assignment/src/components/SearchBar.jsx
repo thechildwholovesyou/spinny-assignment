@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./Header.css";
+import { currentSearchAPIReducer } from "../redux/reducers";
 const SearchBar = () => {
   let [sVal, setNewSval] = useState("");
-
+  let dispatch = useDispatch();
   return (
     <form className="searchBar">
       <input
@@ -15,7 +17,13 @@ const SearchBar = () => {
           setNewSval(e.target.value);
         }}
       />
-      <button type="button" class="btn btn-info">
+      <button
+        type="button"
+        class="btn btn-info"
+        onClick={() => {
+          dispatch(currentSearchAPIReducer(sVal));
+        }}
+      >
         Go..
       </button>
     </form>

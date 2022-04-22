@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import "./Anime.css";
 import Anime from "./Anime";
-import { updateAnimes } from "../redux/actions";
+import { updateAnimes, currentSearch } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 const AnimeList = () => {
-  let query = "naruto";
-  let page = 1;
   let animeList = useSelector((state) => state.animeListReducer);
+  let currSearch = useSelector((state) => state.currentSearchAPIReducer);
+
+  let query = currSearch;
+  let page = 1;
+
   let dispatch = useDispatch();
   useEffect(() => {
     const fetchAnimes = async () => {
