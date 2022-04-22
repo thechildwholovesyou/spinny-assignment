@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-
+import "./Footer.css";
 import {
   updateAnimes,
   currentSearch,
@@ -15,6 +15,7 @@ const Footer = () => {
       onClick={() => {
         dispatch(incrementPageNumberAction());
       }}
+      className="button_loadMore"
     >
       Load More
     </button>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Anime.css";
 import Anime from "./Anime";
 import Footer from "./Footer";
+import Loading from "./Loading";
 import {
   updateAnimes,
   currentSearch,
@@ -19,6 +20,10 @@ const AnimeList = () => {
   let dispatch = useDispatch();
   useEffect(() => {
     const fetchAnimes = async () => {
+        
+
+
+
       if (currSearch == undefined || currSearch.length == 0) {
         toast("Please search Your favourite Animes");
         return;
@@ -51,16 +56,22 @@ const AnimeList = () => {
 
   return (
     <div>
-      {console.log(animeList)}
-      <section className="anime-container">
-        {animeList.map((el) => {
-          return el.map((e) => {
-            console.log(e);
-            return <Anime image_url={e.image_url} title={e.title} />;
-          });
-        })}
-      </section>
-      <Footer />
+      {currSearch.length == 0 ? (
+        <Loading/>
+      ) : (
+        <>
+          <section className="anime-container">
+            {animeList.map((el) => {
+              return el.map((e) => {
+                console.log(e);
+                return <Anime image_url={e.image_url} title={e.title} />;
+              });
+            })}
+          </section>
+          <Footer />
+        </>
+      )}
+
       <ToastContainer
         position="top-right"
         autoClose={5000}
