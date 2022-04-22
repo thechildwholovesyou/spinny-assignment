@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import "./Anime.css";
 import Anime from "./Anime";
+import Footer from "./Footer";
 import {
   updateAnimes,
   currentSearch,
   incrementPageNumberAction,
 } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const AnimeList = () => {
   let animeList = useSelector((state) => state.animeList);
@@ -17,6 +20,7 @@ const AnimeList = () => {
   useEffect(() => {
     const fetchAnimes = async () => {
       if (currSearch == undefined || currSearch.length == 0) {
+        toast("Please search Your favourite Animes");
         return;
       }
       const response = await fetch(
@@ -26,6 +30,18 @@ const AnimeList = () => {
       });
       const data = await response.json();
       console.log(data.results);
+
+      if (!data.results) {
+        if (data.status == 404) {
+          //dispatch(error(true));
+          toast.error(data.message);
+        } else {
+          //dispatch(error(true));
+          toast.error("Oops some error occured ");
+        }
+        return;
+      }
+
       dispatch(updateAnimes(data.results));
     };
     fetchAnimes();
@@ -44,6 +60,18 @@ const AnimeList = () => {
           });
         })}
       </section>
+      <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
