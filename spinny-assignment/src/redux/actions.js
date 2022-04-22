@@ -11,3 +11,17 @@ export const currentSearch = (v) => {
     payload: v,
   };
 };
+
+export const newAnimes = (v) => {
+  return {
+    type: "NEW_ANIMES",
+    payload: v,
+  };
+};
+
+export const incrementPageNumberAction = (v) => {
+  return {
+    type: "INCREMENT_PAGE_NO",
+    payload: v,
+  };
+};

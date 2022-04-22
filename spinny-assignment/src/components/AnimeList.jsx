@@ -1,21 +1,26 @@
 import React, { useEffect } from "react";
 import "./Anime.css";
 import Anime from "./Anime";
-import { updateAnimes, currentSearch } from "../redux/actions";
+import {
+  updateAnimes,
+  currentSearch,
+  incrementPageNumberAction,
+} from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 const AnimeList = () => {
   let animeList = useSelector((state) => state.animeListReducer);
-  let currSearch = useSelector((state) => state.currentSearchAPIReducer);
-
-  let query = currSearch;
-  let page = 1;
+  let currSearch = useSelector((state) => state.currentSearchReducer);
+  let currPage = useSelector((state) => state.incrementPageReducer);
 
   let dispatch = useDispatch();
   useEffect(() => {
     const fetchAnimes = async () => {
+      if (currSearch == undefined || currSearch.length == 0) {
+        return;
+      }
       const response = await fetch(
-        `https://api.jikan.moe/v3/search/anime?q=${query}&limit=16&page=${page}`
+        `https://api.jikan.moe/v3/search/anime?q=${currSearch}&limit=16&page=${currPage}`
       ).catch((err) => {
         console.log(err);
       });
@@ -24,7 +29,7 @@ const AnimeList = () => {
       dispatch(updateAnimes(data.results));
     };
     fetchAnimes();
-  }, []);
+  }, [currSearch, currPage]);
   console.log(animeList);
   return (
     <div>

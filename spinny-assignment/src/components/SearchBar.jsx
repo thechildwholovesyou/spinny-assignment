@@ -1,27 +1,31 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Header.css";
-import { currentSearchAPIReducer } from "../redux/reducers";
+
+import { updateAnimes, currentSearch, newAnimes } from "../redux/actions";
 const SearchBar = () => {
-  let [sVal, setNewSval] = useState("");
+  const  [sval, setSval] = useState("");
   let dispatch = useDispatch();
   return (
     <form className="searchBar">
       <input
         type="text"
         placeholder="Search anime..."
-        autoFocus={true}
+        
         className="input"
-        value={sVal}
+        value={sval}
         onChange={(e) => {
-          setNewSval(e.target.value);
+          setSval(e.target.value);
         }}
       />
       <button
         type="button"
         class="btn btn-info"
-        onClick={() => {
-          dispatch(currentSearchAPIReducer(sVal));
+        onClick={(e) => {
+          e.preventDefault();
+          dispatch(currentSearch(sval));
+          dispatch(newAnimes());
+          setSval = "";
         }}
       >
         Go..
