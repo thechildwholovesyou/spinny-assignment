@@ -10,7 +10,7 @@ import {
   currentSearch,
   incrementPageNumberAction,
   error,
-  load,
+  loadCheck,
 } from "../redux/actions";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -21,47 +21,60 @@ const AnimeList = () => {
   let animeList = useSelector((state) => state.animeList);
   let currSearch = useSelector((state) => state.currentSearch);
   let currPage = useSelector((state) => state.currPage);
-
+  let load = useSelector((state) => state.loadCheck);
+  let err = useSelector((state) => state.error);
   console.log(currPage);
+
+  const fetchAnimes = async () => {
+    if (currSearch == undefined || currSearch.length == 0) {
+      toast("Please search Your favourite Animes");
+      return;
+    }
+    const response = await fetch(
+      `https://api.jikan.moe/v3/search/anime?q=${currSearch}&limit=16&page=${currPage}`
+    ).catch((err) => {
+      //console.log(err);
+      dispatch(error(false));
+      dispatch(loadCheck(false));
+      toast.error(err);
+      return;
+    });
+    const data = await response.json();
+    console.log(data.results);
+
+    if (!data.results) {
+      if (data.status == 404) {
+        dispatch(error(true));
+        dispatch(loadCheck(false));
+        toast.error(data.message);
+      } else {
+        dispatch(error(true));
+        dispatch(loadCheck(false));
+        toast.error("Oops some error occured ");
+      }
+      return;
+    }
+
+    dispatch(updateAnimes(data.results));
+    dispatch(loadCheck(false));
+  };
 
   let dispatch = useDispatch();
   useEffect(() => {
-    const fetchAnimes = async () => {
-      if (currSearch == undefined || currSearch.length == 0) {
-        toast("Please search Your favourite Animes");
-        return;
-      }
-      const response = await fetch(
-        `https://api.jikan.moe/v3/search/anime?q=${currSearch}&limit=16&page=${currPage}`
-      ).catch((err) => {
-        console.log(err);
-      });
-      const data = await response.json();
-      console.log(data.results);
-
-      if (!data.results) {
-        if (data.status == 404) {
-          dispatch(error(true));
-          toast.error(data.message);
-        } else {
-          dispatch(error(true));
-          toast.error("Oops some error occured ");
-        }
-        return;
-      }
-
-      dispatch(updateAnimes(data.results));
-      dispatch(load(false));
-    };
-    dispatch(load(true));
+    dispatch(loadCheck(true));
     fetchAnimes();
+    //dispatch(loadCheck(false));
   }, [currSearch, currPage]);
 
   //console.log(animeList);
 
+  console.log(currSearch);
+  console.log(err);
+  console.log(load);
+
   return (
     <div>
-      {currSearch.length == 0 ? (
+      {currSearch.length == 0 || err || load ? (
         <Loading />
       ) : (
         <>

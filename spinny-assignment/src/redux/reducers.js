@@ -49,7 +49,7 @@ export const errorReducer = (state = false, action) => {
 
 // Reducer for Loading Status
 
-export const loadReducer = (state = true, action) => {
+export const loadReducer = (state = false, action) => {
   switch (action.type) {
     case "LOAD":
       return action.payload;

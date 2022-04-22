@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import "../styles/Header.css"
-import { updateAnimes, currentSearch, newAnimes } from "../redux/actions";
+import "../styles/Header.css";
+import {
+  updateAnimes,
+  currentSearch,
+  newAnimes,
+  error,
+  loadCheck,
+} from "../redux/actions";
 const SearchBar = () => {
   let [sval, setSval] = useState("");
   let dispatch = useDispatch();
@@ -22,8 +28,11 @@ const SearchBar = () => {
         class="btn btn-info"
         onClick={(e) => {
           e.preventDefault();
+          dispatch(error(false));
+          dispatch(loadCheck(true));
           dispatch(currentSearch(sval));
           dispatch(newAnimes());
+
           setSval("");
         }}
       >

@@ -17,7 +17,7 @@ let rootReducer = combineReducers({
   currentSearch: currentSearchAPIReducer,
   currPage: incrementPageReducer,
   error: errorReducer,
-  load: loadReducer,
+  loadCheck: loadReducer,
 });
 
 let store = createStore(rootReducer);

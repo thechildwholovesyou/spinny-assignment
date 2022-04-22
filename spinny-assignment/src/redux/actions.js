@@ -45,7 +45,7 @@ export const error = (v) => {
 
 // Action for Loading Status
 
-export const load = (v) => {
+export const loadCheck = (v) => {
   return {
     type: "LOAD",
     payload: v,
