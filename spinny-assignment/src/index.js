@@ -11,8 +11,8 @@ import {
 import { Provider } from "react-redux";
 
 let rootReducer = combineReducers({
-  animeListReducer: amineListReducer,
-  currentSearchReducer: currentSearchAPIReducer,
+  animeList: amineListReducer,
+  currentSearch: currentSearchAPIReducer,
   currPage: incrementPageReducer,
 });
 

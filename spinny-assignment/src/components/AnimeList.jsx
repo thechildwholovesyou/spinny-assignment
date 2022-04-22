@@ -9,10 +9,10 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 const AnimeList = () => {
-  let animeList = useSelector((state) => state.animeListReducer);
-  let currSearch = useSelector((state) => state.currentSearchReducer);
-  let currPage = useSelector((state) => state.incrementPageReducer);
-
+  let animeList = useSelector((state) => state.animeList);
+  let currSearch = useSelector((state) => state.currentSearch);
+  let currPage = useSelector((state) => state.currPage);
+  console.log(currPage);
   let dispatch = useDispatch();
   useEffect(() => {
     const fetchAnimes = async () => {
@@ -30,7 +30,9 @@ const AnimeList = () => {
     };
     fetchAnimes();
   }, [currSearch, currPage]);
+
   console.log(animeList);
+
   return (
     <div>
       {console.log(animeList)}

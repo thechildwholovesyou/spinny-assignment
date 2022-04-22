@@ -4,14 +4,13 @@ import "./Header.css";
 
 import { updateAnimes, currentSearch, newAnimes } from "../redux/actions";
 const SearchBar = () => {
-  const  [sval, setSval] = useState("");
+  let [sval, setSval] = useState("");
   let dispatch = useDispatch();
   return (
     <form className="searchBar">
       <input
         type="text"
         placeholder="Search anime..."
-        
         className="input"
         value={sval}
         onChange={(e) => {
@@ -25,7 +24,7 @@ const SearchBar = () => {
           e.preventDefault();
           dispatch(currentSearch(sval));
           dispatch(newAnimes());
-          setSval = "";
+          setSval("");
         }}
       >
         Go..
