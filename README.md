@@ -6,12 +6,14 @@
 2. React Redux
 3. React Router DOM
 
-# DEPLOYED VERSION :
+# DEPLOYED VERSION : https://spinny-assignment.herokuapp.com/
 
 # HOW TO RUN THIS PROJECT LOCALLY
 
-1. Clone This Repository.
-2. npm install
-3. npm start
+STEP 1. Clone This Repository.
+STEP 2. npm install
+SETP 3. npm start
 
 # HURRAYY!!! Your Project is now ready to use at http://localhost:3000/
+
+# THANKS
