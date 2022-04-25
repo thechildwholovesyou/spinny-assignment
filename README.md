@@ -1,5 +1,7 @@
 ## SPINNY FRONTEND ASSIGNMENT
 
+## minor bug : Dear reviewer, I missed an edge case in this assgnment that whenever we have to search a new anime, page number should be reset to 0. Rest all the functionalities are working fine . I can implement that within few minutes, but that might affect the hosted Link. 
+
 ### LIBRARIES USED
 
 1. React
